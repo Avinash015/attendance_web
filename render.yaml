@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: attendance-system  
+    env: python
+    runtime: python-3.9  
+    plan: free 
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app  
+    healthCheckPath: /  
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://admin:Admin123!@localhost:5432/attendance_db  
+      - key: SECRET_KEY
+        value: fb7406b6e9a5a5324cb3936253e24f71b7362d19e7dd4b92  
