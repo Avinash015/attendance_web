@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Dashboard</h1>
+    <div class="text-right mb-3">
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Year of Study</th>
+                <th>Phone Number</th>
+                <th>Branch</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll_no }}</td>
+                <td>{{ student.year_of_study }}</td>
+                <td>{{ student.phone_number }}</td>
+                <td>{{ student.branch }}</td>
+                <td>{{ student.gender }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="text-center">No students found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
